@@ -1,0 +1,3 @@
+[submodule "SID"]
+	path = SID
+	url = https://github.com/SergejKoehn/SID.git
