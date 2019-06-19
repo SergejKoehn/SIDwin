@@ -75,6 +75,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -90,10 +91,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USE_MATH_DEFINES;VERSION= "1.00";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Develop\_Arduino\SIDwin\wave\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>Winmm.lib;Dsound.lib;User32.lib;Ole32.lib;AMSTRMID.LIB</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -111,12 +113,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USE_MATH_DEFINES;VERSION= "1.00";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>Winmm.lib;Dsound.lib;User32.lib;Ole32.lib;AMSTRMID.LIB;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -132,25 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="SID\Instrument.h" />
-    <ClInclude Include="SID\SID.h" />
-    <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="SIDwin.cpp" />
-    <ClCompile Include="SID\Instrument.cpp" />
-    <ClCompile Include="SID\SID.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -159,6 +143,66 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="GT\gsid.cpp" />
+    <ClCompile Include="GT\resid-fp\envelopefp.cpp" />
+    <ClCompile Include="GT\resid-fp\extfiltfp.cpp" />
+    <ClCompile Include="GT\resid-fp\filterfp.cpp" />
+    <ClCompile Include="GT\resid-fp\potfp.cpp" />
+    <ClCompile Include="GT\resid-fp\sidfp.cpp" />
+    <ClCompile Include="GT\resid-fp\versionfp.cpp" />
+    <ClCompile Include="GT\resid-fp\voicefp.cpp" />
+    <ClCompile Include="GT\resid-fp\wavefp.cpp" />
+    <ClCompile Include="GT\resid\envelope.cpp" />
+    <ClCompile Include="GT\resid\extfilt.cpp" />
+    <ClCompile Include="GT\resid\filter.cpp" />
+    <ClCompile Include="GT\resid\pot.cpp" />
+    <ClCompile Include="GT\resid\sid.cpp" />
+    <ClCompile Include="GT\resid\version.cpp" />
+    <ClCompile Include="GT\resid\voice.cpp" />
+    <ClCompile Include="GT\resid\wave.cpp" />
+    <ClCompile Include="GT\resid\wave6581_PST.cpp" />
+    <ClCompile Include="GT\resid\wave6581_PS_.cpp" />
+    <ClCompile Include="GT\resid\wave6581_P_T.cpp" />
+    <ClCompile Include="GT\resid\wave6581__ST.cpp" />
+    <ClCompile Include="GT\resid\wave8580_PST.cpp" />
+    <ClCompile Include="GT\resid\wave8580_PS_.cpp" />
+    <ClCompile Include="GT\resid\wave8580_P_T.cpp" />
+    <ClCompile Include="GT\resid\wave8580__ST.cpp" />
+    <ClCompile Include="SampleWave.cpp" />
+    <ClCompile Include="SIDwin.cpp" />
+    <ClCompile Include="SID\Instrument.cpp" />
+    <ClCompile Include="SID\SIDIF.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TestSID.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GT\gsid.h" />
+    <ClInclude Include="GT\resid-fp\envelopefp.h" />
+    <ClInclude Include="GT\resid-fp\extfiltfp.h" />
+    <ClInclude Include="GT\resid-fp\filterfp.h" />
+    <ClInclude Include="GT\resid-fp\potfp.h" />
+    <ClInclude Include="GT\resid-fp\siddefsfp.h" />
+    <ClInclude Include="GT\resid-fp\sidfp.h" />
+    <ClInclude Include="GT\resid-fp\voicefp.h" />
+    <ClInclude Include="GT\resid-fp\wavefp.h" />
+    <ClInclude Include="GT\resid\envelope.h" />
+    <ClInclude Include="GT\resid\extfilt.h" />
+    <ClInclude Include="GT\resid\filter.h" />
+    <ClInclude Include="GT\resid\pot.h" />
+    <ClInclude Include="GT\resid\sid.h" />
+    <ClInclude Include="GT\resid\siddefs.h" />
+    <ClInclude Include="GT\resid\spline.h" />
+    <ClInclude Include="GT\resid\voice.h" />
+    <ClInclude Include="GT\resid\wave.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SampleWave.h" />
+    <ClInclude Include="SID\Instrument.h" />
+    <ClInclude Include="SID\SIDIF.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TestSID.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
