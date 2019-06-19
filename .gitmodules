@@ -1,3 +1,6 @@
 [submodule "SID"]
 	path = SID
 	url = https://github.com/SergejKoehn/SID.git
+[submodule "wave"]
+	path = wave
+	url = https://github.com/audionamix/wave.git
